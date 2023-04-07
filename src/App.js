@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Income from './Income';
+import Expense from './Expense';
+import './App.css'; 
 
-function App() {
+const App = () => {
+  const [totalIncome, setTotalIncome] = useState(0);
+  const [totalExpense, setTotalExpense] = useState(0);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container"> 
+      <h1 className="title1">Income and Expenses</h1> 
+      <Income setTotalIncome={setTotalIncome} />
+      <Expense setTotalExpense={setTotalExpense} />
+      <p className="balance">Total Balance: {totalIncome - totalExpense}</p> {/* Add a balance class */}
     </div>
   );
-}
+};
 
 export default App;
